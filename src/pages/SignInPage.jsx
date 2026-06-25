@@ -42,19 +42,11 @@ function SignInPage() {
   }
 
   return (
-<<<<<<< HEAD
     <div className="mx-auto w-full max-w-[calc(100vw-2rem)] rounded-md border border-lightGold bg-white p-5 shadow-soft sm:max-w-xl sm:p-8">
       <p className="text-sm font-semibold uppercase tracking-wide text-gold">Welcome back</p>
       <h1 className="mt-3 text-3xl font-bold text-mainGreen">Sign in</h1>
       {location.state?.message ? (
         <div className="mt-4 rounded-md border border-lightGold bg-goldCream px-4 py-3 text-sm text-mainGreen">
-=======
-    <div className="mx-auto max-w-xl rounded-md border border-slate-200 bg-white p-6 shadow-soft sm:p-8">
-      <p className="text-sm font-semibold uppercase tracking-wide text-meadow">Welcome back</p>
-      <h1 className="mt-3 text-3xl font-bold text-ink">Sign in</h1>
-      {location.state?.message ? (
-        <div className="mt-4 rounded-md border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm text-emerald-800">
->>>>>>> 66450274e42ff63bdebda6eb520bd02bf582bed5
           {location.state.message}
         </div>
       ) : null}
@@ -84,25 +76,15 @@ function SignInPage() {
         <button
           type="submit"
           disabled={submitting}
-<<<<<<< HEAD
           className="w-full rounded-md bg-mainGreen px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-accentGreen disabled:cursor-not-allowed disabled:opacity-60"
-=======
-          className="w-full rounded-md bg-ink px-4 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-ink/90 disabled:cursor-not-allowed disabled:opacity-60"
->>>>>>> 66450274e42ff63bdebda6eb520bd02bf582bed5
         >
           {submitting ? 'Signing in...' : 'Sign in'}
         </button>
       </form>
 
-<<<<<<< HEAD
       <p className="mt-5 text-center text-sm text-secondary">
         Need an account?{' '}
         <Link to="/signup" className="font-semibold text-mainGreen underline decoration-gold underline-offset-4">
-=======
-      <p className="mt-5 text-center text-sm text-slate-600">
-        Need an account?{' '}
-        <Link to="/signup" className="font-semibold text-meadow">
->>>>>>> 66450274e42ff63bdebda6eb520bd02bf582bed5
           Sign up
         </Link>
       </p>
