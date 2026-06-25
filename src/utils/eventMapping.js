@@ -34,7 +34,11 @@ export function normalizeEvent(payload) {
 export function normalizeEventCollection(payload) {
   const events = Array.isArray(payload)
     ? payload
+<<<<<<< HEAD
     : payload?.events || payload?.items || payload?.results || payload?.data || []
+=======
+    : payload?.events || payload?.items || payload?.data || []
+>>>>>>> 66450274e42ff63bdebda6eb520bd02bf582bed5
 
   return events
     .map(normalizeEvent)

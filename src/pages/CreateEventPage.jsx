@@ -75,10 +75,17 @@ function CreateEventPage() {
   }
 
   return (
+<<<<<<< HEAD
     <div className="mx-auto w-full max-w-[calc(100vw-2rem)] rounded-md border border-lightGold bg-white p-5 shadow-soft sm:max-w-2xl sm:p-8">
       <p className="text-sm font-semibold uppercase tracking-wide text-gold">Protected</p>
       <h1 className="mt-3 text-3xl font-bold text-mainGreen">Create event</h1>
       <p className="mt-3 text-sm leading-6 text-secondary">
+=======
+    <div className="mx-auto max-w-2xl rounded-md border border-slate-200 bg-white p-6 shadow-soft sm:p-8">
+      <p className="text-sm font-semibold uppercase tracking-wide text-meadow">Protected</p>
+      <h1 className="mt-3 text-3xl font-bold text-ink">Create event</h1>
+      <p className="mt-3 text-sm leading-6 text-slate-600">
+>>>>>>> 66450274e42ff63bdebda6eb520bd02bf582bed5
         Publish a new event to the local Events API. The request includes your stored authentication token.
       </p>
 
@@ -125,7 +132,11 @@ function CreateEventPage() {
         <button
           type="submit"
           disabled={submitting}
+<<<<<<< HEAD
           className="w-full rounded-md bg-mainGreen px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-accentGreen disabled:cursor-not-allowed disabled:opacity-60"
+=======
+          className="w-full rounded-md bg-coral px-4 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-coral/90 disabled:cursor-not-allowed disabled:opacity-60"
+>>>>>>> 66450274e42ff63bdebda6eb520bd02bf582bed5
         >
           {submitting ? 'Creating event...' : 'Create event'}
         </button>
