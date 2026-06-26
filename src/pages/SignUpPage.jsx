@@ -68,17 +68,10 @@ function SignUpPage() {
   }
 
   return (
-<<<<<<< HEAD
     <div className="mx-auto w-full max-w-[calc(100vw-2rem)] rounded-md border border-lightGold bg-white p-5 shadow-soft sm:max-w-xl sm:p-8">
       <p className="text-sm font-semibold uppercase tracking-wide text-gold">Create account</p>
       <h1 className="mt-3 text-3xl font-bold text-mainGreen">Sign up</h1>
       <p className="mt-3 text-sm leading-6 text-secondary">
-=======
-    <div className="mx-auto max-w-xl rounded-md border border-slate-200 bg-white p-6 shadow-soft sm:p-8">
-      <p className="text-sm font-semibold uppercase tracking-wide text-meadow">Create account</p>
-      <h1 className="mt-3 text-3xl font-bold text-ink">Sign up</h1>
-      <p className="mt-3 text-sm leading-6 text-slate-600">
->>>>>>> 66450274e42ff63bdebda6eb520bd02bf582bed5
         Create an account so you can sign in and publish events.
       </p>
 
@@ -119,25 +112,15 @@ function SignUpPage() {
         <button
           type="submit"
           disabled={submitting}
-<<<<<<< HEAD
           className="w-full rounded-md bg-mainGreen px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-accentGreen disabled:cursor-not-allowed disabled:opacity-60"
-=======
-          className="w-full rounded-md bg-meadow px-4 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-meadow/90 disabled:cursor-not-allowed disabled:opacity-60"
->>>>>>> 66450274e42ff63bdebda6eb520bd02bf582bed5
         >
           {submitting ? 'Creating account...' : 'Create account'}
         </button>
       </form>
 
-<<<<<<< HEAD
       <p className="mt-5 text-center text-sm text-secondary">
         Already have an account?{' '}
         <Link to="/signin" className="font-semibold text-mainGreen underline decoration-gold underline-offset-4">
-=======
-      <p className="mt-5 text-center text-sm text-slate-600">
-        Already have an account?{' '}
-        <Link to="/signin" className="font-semibold text-meadow">
->>>>>>> 66450274e42ff63bdebda6eb520bd02bf582bed5
           Sign in
         </Link>
       </p>
