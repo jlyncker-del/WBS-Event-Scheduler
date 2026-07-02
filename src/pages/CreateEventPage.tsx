@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import type { ChangeEvent, FormEvent } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { createEvent } from '../api/events'
 import ErrorMessage from '../components/ErrorMessage'
@@ -11,8 +12,11 @@ const initialValues = {
   description: '',
 }
 
-function validate(values) {
-  const errors = {}
+type CreateEventFormValues = typeof initialValues
+type CreateEventFormErrors = Partial<Record<keyof CreateEventFormValues, string>>
+
+function validate(values: CreateEventFormValues): CreateEventFormErrors {
+  const errors: CreateEventFormErrors = {}
 
   if (!values.title.trim()) {
     errors.title = 'Title is required.'
@@ -30,18 +34,18 @@ function validate(values) {
 }
 
 function CreateEventPage() {
-  const [values, setValues] = useState(initialValues)
-  const [errors, setErrors] = useState({})
-  const [apiError, setApiError] = useState(null)
+  const [values, setValues] = useState<CreateEventFormValues>(initialValues)
+  const [errors, setErrors] = useState<CreateEventFormErrors>({})
+  const [apiError, setApiError] = useState<unknown>(null)
   const [submitting, setSubmitting] = useState(false)
   const navigate = useNavigate()
 
-  function updateField(event) {
+  function updateField(event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>): void {
     const { name, value } = event.target
     setValues((current) => ({ ...current, [name]: value }))
   }
 
-  async function handleSubmit(event) {
+  async function handleSubmit(event: FormEvent<HTMLFormElement>): Promise<void> {
     event.preventDefault()
     const nextErrors = validate(values)
     setErrors(nextErrors)

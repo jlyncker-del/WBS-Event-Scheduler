@@ -1,24 +1,30 @@
 import { useState } from 'react'
+import type { ChangeEvent, FormEvent } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import ErrorMessage from '../components/ErrorMessage'
 import FormInput from '../components/FormInput'
 import { useAuth } from '../hooks/useAuth'
 
+interface SignInFormValues {
+  email: string
+  password: string
+}
+
 function SignInPage() {
-  const [values, setValues] = useState({ email: '', password: '' })
-  const [apiError, setApiError] = useState(null)
+  const [values, setValues] = useState<SignInFormValues>({ email: '', password: '' })
+  const [apiError, setApiError] = useState<unknown>(null)
   const [submitting, setSubmitting] = useState(false)
   const { signIn } = useAuth()
   const navigate = useNavigate()
   const location = useLocation()
   const redirectTo = location.state?.from?.pathname || '/'
 
-  function updateField(event) {
+  function updateField(event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>): void {
     const { name, value } = event.target
     setValues((current) => ({ ...current, [name]: value }))
   }
 
-  async function handleSubmit(event) {
+  async function handleSubmit(event: FormEvent<HTMLFormElement>): Promise<void> {
     event.preventDefault()
 
     if (!values.email.trim() || !values.password) {

@@ -1,11 +1,16 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useMemo, useState, type ReactNode } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { signIn as signInRequest } from '../api/auth'
 import { setUnauthorizedHandler } from '../api/client'
 import { clearStoredToken, getStoredToken } from '../api/storage'
+import type { AuthContextValue } from '../types/auth'
 import AuthContext from './AuthContextValue'
 
-export function AuthProvider({ children }) {
+interface AuthProviderProps {
+  children: ReactNode
+}
+
+export function AuthProvider({ children }: AuthProviderProps) {
   const [token, setToken] = useState(() => getStoredToken())
   const navigate = useNavigate()
 
@@ -21,7 +26,7 @@ export function AuthProvider({ children }) {
     return () => setUnauthorizedHandler(null)
   }, [navigate])
 
-  const value = useMemo(
+  const value = useMemo<AuthContextValue>(
     () => ({
       isAuthenticated: Boolean(token),
       token,
