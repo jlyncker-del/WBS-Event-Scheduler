@@ -40,7 +40,7 @@ function HomePage() {
       {!loading && !error && events.length > 0 ? (
         <section className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {events.map((event) => (
-            <EventCard key={event.id || `${event.title}-${event.date}`} event={event} />
+            <EventCard key={event.id} event={event} />
           ))}
         </section>
       ) : null}

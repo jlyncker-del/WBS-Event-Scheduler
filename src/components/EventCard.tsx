@@ -1,8 +1,13 @@
 import { Calendar, MapPin } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import { formatEventDate } from '../utils/eventMapping'
+import type { EventRecord } from '../types/event'
 
-function EventCard({ event }) {
+interface EventCardProps {
+  event: EventRecord
+}
+
+function EventCard({ event }: EventCardProps) {
   return (
     <Link
       to={`/events/${event.id}`}

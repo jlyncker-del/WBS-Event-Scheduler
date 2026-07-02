@@ -1,4 +1,30 @@
-function FormInput({ id, label, hint, error, multiline = false, className = '', ...props }) {
+import type { ChangeEventHandler, HTMLInputTypeAttribute } from 'react'
+
+type SharedFormInputProps = {
+  id: string
+  name: string
+  label: string
+  hint?: string
+  error?: string | undefined
+  value: string
+  onChange: ChangeEventHandler<HTMLInputElement | HTMLTextAreaElement>
+  className?: string
+  autoComplete?: string
+}
+
+type TextInputProps = SharedFormInputProps & {
+  multiline?: false
+  type?: HTMLInputTypeAttribute
+}
+
+type TextAreaProps = SharedFormInputProps & {
+  multiline: true
+  type?: never
+}
+
+type FormInputProps = TextInputProps | TextAreaProps
+
+function FormInput({ id, label, hint, error, multiline = false, className = '', ...props }: FormInputProps) {
   const inputClasses =
     'mt-2 w-full rounded-md border border-lightGold bg-white px-3 py-2 text-sm text-textGreen outline-none transition placeholder:text-secondary/70 focus:border-gold focus:ring-4 focus:ring-gold/20'
 

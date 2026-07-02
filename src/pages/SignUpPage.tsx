@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import type { ChangeEvent, FormEvent } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { signUp } from '../api/auth'
 import ErrorMessage from '../components/ErrorMessage'
@@ -10,8 +11,11 @@ const initialValues = {
   password: '',
 }
 
-function validate(values) {
-  const errors = {}
+type SignUpFormValues = typeof initialValues
+type SignUpFormErrors = Partial<Record<keyof SignUpFormValues, string>>
+
+function validate(values: SignUpFormValues): SignUpFormErrors {
+  const errors: SignUpFormErrors = {}
 
   if (values.name.trim() && values.name.trim().length < 2) {
     errors.name = 'Name must be at least 2 characters.'
@@ -29,18 +33,18 @@ function validate(values) {
 }
 
 function SignUpPage() {
-  const [values, setValues] = useState(initialValues)
-  const [errors, setErrors] = useState({})
-  const [apiError, setApiError] = useState(null)
+  const [values, setValues] = useState<SignUpFormValues>(initialValues)
+  const [errors, setErrors] = useState<SignUpFormErrors>({})
+  const [apiError, setApiError] = useState<unknown>(null)
   const [submitting, setSubmitting] = useState(false)
   const navigate = useNavigate()
 
-  function updateField(event) {
+  function updateField(event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>): void {
     const { name, value } = event.target
     setValues((current) => ({ ...current, [name]: value }))
   }
 
-  async function handleSubmit(event) {
+  async function handleSubmit(event: FormEvent<HTMLFormElement>): Promise<void> {
     event.preventDefault()
     const nextErrors = validate(values)
     setErrors(nextErrors)

@@ -1,7 +1,9 @@
 import { apiRequest } from './client'
 import { storeToken } from './storage'
+import type { LoginRequest, LoginResponse, SignInResult, SignUpRequest } from '../types/auth'
+import type { User } from '../types/user'
 
-function extractToken(payload) {
+function extractToken(payload: LoginResponse): string | null {
   return (
     payload?.token ||
     payload?.accessToken ||
@@ -12,8 +14,8 @@ function extractToken(payload) {
   )
 }
 
-export async function signIn(credentials) {
-  const payload = await apiRequest('/api/auth/login', {
+export async function signIn(credentials: LoginRequest): Promise<SignInResult> {
+  const payload = await apiRequest<LoginResponse, LoginRequest>('/api/auth/login', {
     method: 'POST',
     body: credentials,
   })
@@ -28,8 +30,8 @@ export async function signIn(credentials) {
   return { token, payload }
 }
 
-export function signUp(user) {
-  return apiRequest('/api/users', {
+export function signUp(user: SignUpRequest): Promise<User> {
+  return apiRequest<User, SignUpRequest>('/api/users', {
     method: 'POST',
     body: user,
   })

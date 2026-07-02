@@ -1,10 +1,23 @@
 import { useEffect, useState } from 'react'
 import { getEventById, listEvents } from '../api/events'
+import type { EventRecord } from '../types/event'
 
-export function useEvents() {
-  const [events, setEvents] = useState([])
+interface EventsHookState {
+  events: EventRecord[]
+  loading: boolean
+  error: unknown
+}
+
+interface EventHookState {
+  event: EventRecord | null
+  loading: boolean
+  error: unknown
+}
+
+export function useEvents(): EventsHookState {
+  const [events, setEvents] = useState<EventRecord[]>([])
   const [loading, setLoading] = useState(true)
-  const [error, setError] = useState(null)
+  const [error, setError] = useState<unknown>(null)
 
   useEffect(() => {
     let ignore = false
@@ -39,10 +52,10 @@ export function useEvents() {
   return { events, loading, error }
 }
 
-export function useEvent(id) {
-  const [event, setEvent] = useState(null)
+export function useEvent(id: string | null): EventHookState {
+  const [event, setEvent] = useState<EventRecord | null>(null)
   const [loading, setLoading] = useState(true)
-  const [error, setError] = useState(null)
+  const [error, setError] = useState<unknown>(null)
 
   useEffect(() => {
     let ignore = false
